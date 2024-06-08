@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "level-facility-425312-g6",
+  "private_key_id": "4fb660ed215562c9a4008b8d4f46a06002c88e65",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCt1cwLxRgztdh7\nrrRBcl8/N6ImH7Ybc1tJANw+khY3jh4zOdMBbT2DuT+T37PzeIIO15Kbg9uE6ilO\nN0faT4wrwRwyN+8qE0AeI2cIhvmKSRz+awRJxCqbZNLDjjSpB2KFHhZ1uU2PYWkN\n8LXGUCY5haKqzU1MB05jRQVPxBdw94nmnm8jP+1zz4F+PEcjs40gq+H2l4eo4JNI\nAlSgBblqPwA3JV3mDlHKyOcVGfaBfs6SECnPAoRes6XNoDJr4zuyNt6CbnLm/gBp\nUEkCu9NVXC/lcDE4vwtESJMzMp9Pio2J01mD+CREJfz07un1jHRxYGq3SgCbS1sn\nESvOulzRAgMBAAECggEAAdWCBnnd6YA3CNkSwfz7sOMAtUGla0m/nURh7ajqjNVy\n3KHarLjR3a9legOcf2WPKbeXTAZ7CNVx38Ja/EcDf1IQdbt7591gihuHQV82QuEI\nPDNw18g9e90YMhxlAExaXZaB/AAvADkhYy1xk6tVUg/9mCFEUryqOi62cTknOaWd\nqODFfdwksBXcoEOGTaa5l8BwciID83SRf7RGug02KAC7Urdz4FXYAJpXXfN4vzXQ\nWH+NS9l+8ElrwFtGYiwAixUvQUfA2CTUqNc9dTQbWeYuhSKdi9xqBqWtXnQnxWjB\nB/6eIV9FsP2Deh0t463tTBNC5NMnvMgbYvE6S8kZyQKBgQDcJvHRy+wlMV9YHFQS\n3nJpWaP6eQZOB8oTk9oCe28c3rhw7tw0hANHnKW9Limqhz2pkiXwMpmAmV84lEyz\nh9S6f96xsa1x0Jj19znaT/DLYV9PFrNdkK4/tH0MlwNGP08vhWzgdpSFAO6W+upm\nAah9o/bSZ0vxpZGYO6S2VpKiowKBgQDKJCBHV/meoa5/erlcyjMVpUeDWcvOeTGt\nMLf8ozczkpoK/wgyZ4BFyRhLnAdar87k4R4/y2AQnEesHWpKbRM25ei6372xP26F\nhrm96xRXxYxIXjf9Nph/i0WpksqsFVW1uaVjFpdUDaUfEM5Eycnk71gXTYGGM6lV\nHBs/zEzt+wKBgQDLLnI+I0uFpASP6E07wOutCVtKvsmv2IaK/QjXA56v8WoeaIT5\nPuFcBVn9uI4h4YFqcATto3WCd4qnSE9l3jXaDku0ifw+r7uMPqi5MNBWlD6HWrcd\n4nq/Ns+2f+U4vxNRE35Bx48ZFZwd4ePVUzBzDJGu7EDt+9XcvycsVcgtqwKBgQCG\n9c/HUmmLDA/hdSLFXQr2bL9uZ0m3tRsBswFkX+S/PiYzKUtju87cyQK7mJUgazkL\nf3Iezb552J3RwGHzBxhJEv9rpW6VJPC5ndXtg0K1x2N9/coL+aOfpHECYsuGUUhE\naIqPucmXiPSx5RqSutddTp/WDx1naJ6qAHYBBnpmeQKBgQCAS8xQJqCV4B3jFFd7\nF9Um/BphlcXLspLtRuQxR5h1BMG+CXBEQkBXVd1RqbYSjfy2vwHaazUu00iMQCmu\ns3JjZ0LXVauVKQV/XEcWybfAEwndjvq6y/zIHIwCxsv3U9g9sRjK48FYVw7bei17\n0m5Ba8rc0MGRPsiERqr6NhJ6Xg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "darsh-lakhani@level-facility-425312-g6.iam.gserviceaccount.com",
+  "client_id": "112651228110404140413",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/darsh-lakhani%40level-facility-425312-g6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

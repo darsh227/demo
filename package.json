@@ -1,0 +1,31 @@
+{
+  "name": "jwt_login",
+  "version": "1.0.0",
+  "description": "login system based on jwt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "login"
+  ],
+  "author": "darsh",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "config-js": "^1.1.15",
+    "dotenv": "16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "4.19.2",
+    "google-auth-library": "^9.10.0",
+    "google-spreadsheet": "^4.1.2",
+    "googleapi": "^1.0.2",
+    "googleapis": "^137.1.0",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "9.0.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.7",
+    "pooling": "^0.4.6",
+    "xlsx": "^0.18.5"
+  }
+}
