@@ -19,28 +19,28 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const doc = new GoogleSpreadsheet('1OMjencBfj3NzrrkgszJANzoLOGN5aeEgWoRVmUX6-IE', serviceAccountAuth);
 
 
-async function fetchSheetData(data) {
-    const { Salary_date } = data;
-    await doc.loadInfo();
-
-    const now = new Date(Salary_date);
-    const month = now.getMonth() + 1;
-    const year = now.getFullYear();
-    const sheetName = `${year}-${('0' + month).slice(-2)}`;
-    let sheet = doc.sheetsByTitle[sheetName];
-
-    const rows = await sheet.getRows();
-    let employeeIds = [];
+async function fetchSheetData(sheet) {
+    await sheet.loadHeaderRow();
+    let rows = await sheet.getRows();
+    let totalRowIndex = rows.findIndex(row => row._rawData[sheet.headerValues.indexOf('Employee_id')] === 'Total');
+    if (totalRowIndex !== -1) {
+        await rows[totalRowIndex].delete();
+        rows = await sheet.getRows();
+    }
+    console.log(rows.length)
+    let employeeId = '';
     let totalsalary = 0;
     for (let index = 0; index < rows.length; index++) {
         const row = rows[index];
         const rowData = row._rawData;
-        const employeeId = rowData[sheet.headerValues.indexOf('FinalSalary')];
-        employeeIds.push(employeeId);
+        employeeId = rowData[sheet.headerValues.indexOf('FinalSalary')];
         totalsalary += parseFloat(employeeId);
+        console.log(totalsalary, employeeId, rowData,totalRowIndex)
     }
-
-    console.log(totalsalary)
+    await sheet.addRow({
+        Employee_id: 'Total',
+        FinalSalary: totalsalary
+    });
 }
 
 const addRow = async (rows, date) => {
@@ -55,8 +55,8 @@ const addRow = async (rows, date) => {
         if (!sheet) {
             sheet = await doc.addSheet({ title: sheetName, headerValues: ['Salary_date', 'Employee_id', 'Name', 'Salary', 'Deduction', 'FinalSalary'] });
         }
-
         await sheet.addRows(rows);
+        await fetchSheetData(sheet)
     } catch (e) {
         console.log(e);
     }
@@ -70,6 +70,7 @@ const create = async (id, date) => {
         console.error('An error occurred while adding rows:', error);
     }
 };
+
 const salary_slip = async (req, res) => {
     const { data } = req.body;
     if (!data) {
@@ -89,7 +90,6 @@ const salary_slip = async (req, res) => {
         };
         const result = await model.insertQuery(TABLENAMES.SALARY, salary_slip_data);
         await create(data.Employee_id, formattedSalaryDate)
-        await fetchSheetData(salary_slip_data)
 
         res.status(200).json({ message: MESSAGES.DATA_ENTERED, result });
     } catch (err) {
@@ -129,6 +129,8 @@ const deleteRow = async (id, date) => {
                 break;
             }
         }
+        await fetchSheetData(sheet)
+
     } catch (e) {
         console.error(e);
         throw e;
@@ -152,7 +154,6 @@ const salary_slip_delete = async (req, res) => {
         const result = await model.deleteQuery(TABLENAMES.SALARY, Employee_id, salarydate);
 
         await deleteRow(Employee_id, salarydate);
-        await fetchSheetData(salary_slip_data)
 
         res.status(200).json({ message: MESSAGES.DATA_DELETED, result });
     } catch (err) {
@@ -160,7 +161,6 @@ const salary_slip_delete = async (req, res) => {
         res.status(500).json({ error: ERRORMESSAGES.DB_QUERY_ERROR + err.message });
     }
 };
-
 
 const updateRow = async (data) => {
     const { Employee_id, Salary_date, ...fieldsToUpdate } = data;
@@ -196,10 +196,12 @@ const updateRow = async (data) => {
                 break;
             }
         }
+        await fetchSheetData(sheet)
     } catch (e) {
         console.log(e);
     }
 };
+
 const salary_slip_update = async (req, res) => {
     const { data } = req.body;
 
@@ -219,13 +221,11 @@ const salary_slip_update = async (req, res) => {
         };
         const result = await model.UpdateQuery(TABLENAMES.SALARY, salary_slip_data);
         await updateRow(salary_slip_data)
-        await fetchSheetData(salary_slip_data)
         res.status(200).json({ message: MESSAGES.DATA_UPDATED, result });
     } catch (err) {
         res.status(500).json({ error: ERRORMESSAGES.DB_QUERY_ERROR + err });
     }
 };
-
 
 module.exports = {
     salary_slip,
